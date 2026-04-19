@@ -26,7 +26,6 @@ export function HomeClient() {
           <ServicesSection scrollTo={scrollTo} />
           <WorkSection scrollTo={scrollTo} />
           <ProcessSection />
-          <AboutSection />
           <ContactSection />
         </main>
         <HomeFooter />

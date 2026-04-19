@@ -10,7 +10,8 @@ type Props = {
 export function HomeNav({ scrollTo }: Props) {
   return (
     <nav className="fixed top-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-xl border-b border-outline-variant/20">
-      <div className="max-w-full mx-auto px-8 py-4 flex justify-between items-center">
+      <div className="max-w-full mx-auto px-8 py-4 flex items-center relative">
+        <div className="flex-1 flex justify-start">
         <button
           type="button"
           onClick={() => scrollTo("top")}
@@ -18,7 +19,8 @@ export function HomeNav({ scrollTo }: Props) {
         >
           Shimaya
         </button>
-        <div className="hidden md:flex items-center gap-12 font-headline tracking-tight font-semibold text-lg">
+        </div>
+        <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-12 font-headline tracking-tight font-semibold text-xl">
           <button
             type="button"
             onClick={() => scrollTo("services")}
@@ -33,21 +35,8 @@ export function HomeNav({ scrollTo }: Props) {
           >
             Work
           </button>
-          <button
-            type="button"
-            onClick={() => scrollTo("about")}
-            className="text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"
-          >
-            About
-          </button>
-          <Link
-            href="#blog"
-            className="text-on-surface-variant hover:text-on-surface transition-colors"
-          >
-            Blog
-          </Link>
         </div>
-        <div className="flex items-center gap-6">
+        <div className="flex-1 flex justify-end items-center gap-6">
           <ThemeToggle />
           <button
             type="button"

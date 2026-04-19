@@ -17,9 +17,9 @@ export function HeroSection({ scrollTo }: Props) {
             Senior Engineering Lead
           </div>
           <h1 className="text-5xl lg:text-7xl font-extrabold font-headline leading-[1.1] tracking-tight text-on-surface">
-            Web products that help SMBs{" "}
+            Websites promote you 24/7.{" "}
             <span className="bg-gradient-to-r from-primary to-primary-container bg-clip-text text-transparent">
-              grow faster online.
+              No employee will do that.
             </span>
           </h1>
           <p className="text-xl text-on-surface-variant max-w-2xl leading-relaxed">
@@ -59,7 +59,7 @@ export function HeroSection({ scrollTo }: Props) {
         <div className="lg:col-span-5 relative">
           <div className="aspect-square rounded-2xl overflow-hidden bg-surface-container-low shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500 relative">
             <Image
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9jrMhP02lIA3CN7SIwE6j1en1g8vGstss8M64BopHh80I_8f4N8w0n-pSxCUm89FJXmB9SDW_4su5G3uyrQGp-5YjJNG9HVfiFkJUvVwYjIqzsM6SlGolvpwLuLVO3_GheiqOPKuqgoMULpfQ-rlepy6rSzK4fEkVTuRbDGOk90qwZ0dYn6PUa2eO7FXDzdVggzr7LECvQakGTGlhpQfFGnbqBKWRO6uqkmmP681zZ-uAx66SCx6b28cDrIC3aVPDqkQubweTFXl9"
+              src="/images/hero-keyboard.jpg"
               alt="Mechanical keyboard and dual monitor setup showing React code"
               fill
               className="object-cover"

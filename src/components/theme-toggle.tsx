@@ -13,7 +13,7 @@ function getInitialTheme(): Theme {
 }
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>("dark");
 
   useEffect(() => {
     const initial = getInitialTheme();
@@ -45,10 +45,7 @@ export function ThemeToggle() {
         aria-hidden
         className="flex h-4 w-4 items-center justify-center rounded-full bg-violet-600 text-[10px] text-white dark:bg-amber-400 dark:text-black"
       >
-        {theme === "dark" ? "☾" : "☼"}
-      </span>
-      <span className="hidden sm:inline">
-        {theme === "dark" ? "Dark" : "Light"} mode
+        {theme === "dark" ? "☼" : "☾"}
       </span>
     </button>
   );

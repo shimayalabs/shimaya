@@ -43,7 +43,7 @@ export function AboutSection() {
           <div className="relative">
             <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl relative">
               <Image
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCV848F6ZIhToi0jwzFoDOCIeH2BE5_uuVVz-GC042vPVnQ1sYgeAHKXkWm1Umm1Ir6GJP6A_jWXySrTC8wHMCYwsFfHrByLHr0rICfJM98qBf5qI22lATcIM2g47HCHSwL0oCn_iXFst5XVZ-oAXtu_xaJbKpUyg83rg10HtcWv3mEg10_zmB9kxvXcijVBs1EgWuwLz2izRajhh9GUlZUDoj3iqbs73DkCLO6pIiethD4qC5QfjdxOU6GASBAisXraVv5jENi5_80"
+                src="/images/about-portrait.jpg"
                 alt="Professional portrait of Shivangi"
                 fill
                 className="object-cover grayscale hover:grayscale-0 transition-all duration-700"

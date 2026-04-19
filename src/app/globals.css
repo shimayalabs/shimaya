@@ -2,92 +2,176 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* ── Light MD3 tokens ── */
 :root {
-  --background: #f9f9ff;
-  --foreground: #161c27;
+  --md-primary: #3b309e;
+  --md-primary-container: #534ab7;
+  --md-primary-fixed: #e3dfff;
+  --md-primary-fixed-dim: #c5c0ff;
+  --md-on-primary: #ffffff;
+  --md-on-primary-container: #d1ccff;
+  --md-on-primary-fixed: #140067;
+  --md-on-primary-fixed-variant: #3f35a3;
+  --md-inverse-primary: #c5c0ff;
+
+  --md-secondary: #006c52;
+  --md-secondary-container: #8af7cf;
+  --md-secondary-fixed: #8af7cf;
+  --md-secondary-fixed-dim: #6edab4;
+  --md-on-secondary: #ffffff;
+  --md-on-secondary-container: #007257;
+  --md-on-secondary-fixed: #002117;
+  --md-on-secondary-fixed-variant: #00513d;
+
+  --md-tertiary: #384355;
+  --md-tertiary-container: #4f5a6d;
+  --md-tertiary-fixed: #d8e3fa;
+  --md-tertiary-fixed-dim: #bcc7dd;
+  --md-on-tertiary: #ffffff;
+  --md-on-tertiary-container: #c6d1e8;
+  --md-on-tertiary-fixed: #111c2c;
+  --md-on-tertiary-fixed-variant: #3c475a;
+
+  --md-surface: #f9f9ff;
+  --md-surface-dim: #d4daea;
+  --md-surface-bright: #f9f9ff;
+  --md-surface-tint: #584fbc;
+  --md-surface-variant: #dde2f3;
+  --md-surface-container: #e8eeff;
+  --md-surface-container-low: #f1f3ff;
+  --md-surface-container-high: #e3e8f9;
+  --md-surface-container-highest: #dde2f3;
+  --md-surface-container-lowest: #ffffff;
+  --md-on-surface: #161c27;
+  --md-on-surface-variant: #474553;
+  --md-inverse-surface: #2a303d;
+  --md-inverse-on-surface: #ecf0ff;
+
+  --md-outline: #787584;
+  --md-outline-variant: #c8c4d5;
+
+  --md-error: #ba1a1a;
+  --md-error-container: #ffdad6;
+  --md-on-error: #ffffff;
+  --md-on-error-container: #93000a;
 }
 
+/* ── Dark MD3 tokens ── */
 .dark {
-  --background: #0f1117;
-  --foreground: #e8eeff;
+  --md-primary: #c5c0ff;
+  --md-primary-container: #4138b0;
+  --md-primary-fixed: #e3dfff;
+  --md-primary-fixed-dim: #c5c0ff;
+  --md-on-primary: #2a0096;
+  --md-on-primary-container: #e3dfff;
+  --md-on-primary-fixed: #140067;
+  --md-on-primary-fixed-variant: #3f35a3;
+  --md-inverse-primary: #3b309e;
+
+  --md-secondary: #6edab4;
+  --md-secondary-container: #005140;
+  --md-secondary-fixed: #8af7cf;
+  --md-secondary-fixed-dim: #6edab4;
+  --md-on-secondary: #003829;
+  --md-on-secondary-container: #8af7cf;
+  --md-on-secondary-fixed: #002117;
+  --md-on-secondary-fixed-variant: #00513d;
+
+  --md-tertiary: #bcc7dd;
+  --md-tertiary-container: #3c475a;
+  --md-tertiary-fixed: #d8e3fa;
+  --md-tertiary-fixed-dim: #bcc7dd;
+  --md-on-tertiary: #111c2c;
+  --md-on-tertiary-container: #d8e3fa;
+  --md-on-tertiary-fixed: #111c2c;
+  --md-on-tertiary-fixed-variant: #3c475a;
+
+  --md-surface: #121318;
+  --md-surface-dim: #121318;
+  --md-surface-bright: #1e1f26;
+  --md-surface-tint: #c5c0ff;
+  --md-surface-variant: #47464f;
+  --md-surface-container: #1e1f26;
+  --md-surface-container-low: #1a1b21;
+  --md-surface-container-high: #282931;
+  --md-surface-container-highest: #33333b;
+  --md-surface-container-lowest: #0e0e15;
+  --md-on-surface: #e2e2e9;
+  --md-on-surface-variant: #c7c5d0;
+  --md-inverse-surface: #e2e2e9;
+  --md-inverse-on-surface: #2a303d;
+
+  --md-outline: #918f9a;
+  --md-outline-variant: #47464f;
+
+  --md-error: #ffb4ab;
+  --md-error-container: #93000a;
+  --md-on-error: #690005;
+  --md-on-error-container: #ffdad6;
 }
 
+/* ── Wire MD3 vars into Tailwind theme ── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-inter);
   --font-headline: var(--font-manrope), sans-serif;
   --font-body: var(--font-inter), sans-serif;
   --font-label: var(--font-inter), sans-serif;
-}
 
-@theme {
-  /* MD3 Primary */
-  --color-primary: #3b309e;
-  --color-primary-container: #534ab7;
-  --color-primary-fixed: #e3dfff;
-  --color-primary-fixed-dim: #c5c0ff;
-  --color-on-primary: #ffffff;
-  --color-on-primary-container: #d1ccff;
-  --color-on-primary-fixed: #140067;
-  --color-on-primary-fixed-variant: #3f35a3;
-  --color-inverse-primary: #c5c0ff;
+  --color-primary: var(--md-primary);
+  --color-primary-container: var(--md-primary-container);
+  --color-primary-fixed: var(--md-primary-fixed);
+  --color-primary-fixed-dim: var(--md-primary-fixed-dim);
+  --color-on-primary: var(--md-on-primary);
+  --color-on-primary-container: var(--md-on-primary-container);
+  --color-on-primary-fixed: var(--md-on-primary-fixed);
+  --color-on-primary-fixed-variant: var(--md-on-primary-fixed-variant);
+  --color-inverse-primary: var(--md-inverse-primary);
 
-  /* MD3 Secondary */
-  --color-secondary: #006c52;
-  --color-secondary-container: #8af7cf;
-  --color-secondary-fixed: #8af7cf;
-  --color-secondary-fixed-dim: #6edab4;
-  --color-on-secondary: #ffffff;
-  --color-on-secondary-container: #007257;
-  --color-on-secondary-fixed: #002117;
-  --color-on-secondary-fixed-variant: #00513d;
+  --color-secondary: var(--md-secondary);
+  --color-secondary-container: var(--md-secondary-container);
+  --color-secondary-fixed: var(--md-secondary-fixed);
+  --color-secondary-fixed-dim: var(--md-secondary-fixed-dim);
+  --color-on-secondary: var(--md-on-secondary);
+  --color-on-secondary-container: var(--md-on-secondary-container);
+  --color-on-secondary-fixed: var(--md-on-secondary-fixed);
+  --color-on-secondary-fixed-variant: var(--md-on-secondary-fixed-variant);
 
-  /* MD3 Tertiary */
-  --color-tertiary: #384355;
-  --color-tertiary-container: #4f5a6d;
-  --color-tertiary-fixed: #d8e3fa;
-  --color-tertiary-fixed-dim: #bcc7dd;
-  --color-on-tertiary: #ffffff;
-  --color-on-tertiary-container: #c6d1e8;
-  --color-on-tertiary-fixed: #111c2c;
-  --color-on-tertiary-fixed-variant: #3c475a;
+  --color-tertiary: var(--md-tertiary);
+  --color-tertiary-container: var(--md-tertiary-container);
+  --color-tertiary-fixed: var(--md-tertiary-fixed);
+  --color-tertiary-fixed-dim: var(--md-tertiary-fixed-dim);
+  --color-on-tertiary: var(--md-on-tertiary);
+  --color-on-tertiary-container: var(--md-on-tertiary-container);
+  --color-on-tertiary-fixed: var(--md-on-tertiary-fixed);
+  --color-on-tertiary-fixed-variant: var(--md-on-tertiary-fixed-variant);
 
-  /* MD3 Surface */
-  --color-surface: #f9f9ff;
-  --color-surface-dim: #d4daea;
-  --color-surface-bright: #f9f9ff;
-  --color-surface-tint: #584fbc;
-  --color-surface-variant: #dde2f3;
-  --color-surface-container: #e8eeff;
-  --color-surface-container-low: #f1f3ff;
-  --color-surface-container-high: #e3e8f9;
-  --color-surface-container-highest: #dde2f3;
-  --color-surface-container-lowest: #ffffff;
-  --color-on-surface: #161c27;
-  --color-on-surface-variant: #474553;
-  --color-inverse-surface: #2a303d;
-  --color-inverse-on-surface: #ecf0ff;
+  --color-surface: var(--md-surface);
+  --color-surface-dim: var(--md-surface-dim);
+  --color-surface-bright: var(--md-surface-bright);
+  --color-surface-tint: var(--md-surface-tint);
+  --color-surface-variant: var(--md-surface-variant);
+  --color-surface-container: var(--md-surface-container);
+  --color-surface-container-low: var(--md-surface-container-low);
+  --color-surface-container-high: var(--md-surface-container-high);
+  --color-surface-container-highest: var(--md-surface-container-highest);
+  --color-surface-container-lowest: var(--md-surface-container-lowest);
+  --color-on-surface: var(--md-on-surface);
+  --color-on-surface-variant: var(--md-on-surface-variant);
+  --color-inverse-surface: var(--md-inverse-surface);
+  --color-inverse-on-surface: var(--md-inverse-on-surface);
 
-  /* MD3 Outline */
-  --color-outline: #787584;
-  --color-outline-variant: #c8c4d5;
+  --color-outline: var(--md-outline);
+  --color-outline-variant: var(--md-outline-variant);
 
-  /* MD3 Error */
-  --color-error: #ba1a1a;
-  --color-error-container: #ffdad6;
-  --color-on-error: #ffffff;
-  --color-on-error-container: #93000a;
+  --color-error: var(--md-error);
+  --color-error-container: var(--md-error-container);
+  --color-on-error: var(--md-on-error);
+  --color-on-error-container: var(--md-on-error-container);
 }
 
 html,
 body {
   height: 100%;
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
 }
 
 .material-symbols-outlined {

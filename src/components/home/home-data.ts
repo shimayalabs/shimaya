@@ -35,7 +35,7 @@ export const projects = [
     metric: "40% Efficiency",
     gradient: "from-on-surface/80 to-transparent",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCaMaaLYfRoaSoIlQ8hM2tqIsIVZ9h_3SPIovBipHzpJymtrfgVyTqMsZ_POa-rpKdFUdKkQ_pmyHL5faD99XwyXovhrww7Y9ZX3D_fGKm6m7_urZlqMi67kgnEhubyqnvOH1HKGPR0Vxg3ELW9ahZUPHOEc-vZZTEBZ2dfTjam7EEKh2Ia2At65o8YI5mB5ORCKQvxGCPgMeLpEkYqRldcBKtSRMfuGSExDNEIX-YM2s26S3JaBOi-hRCoz0v-qCrfrT6nxdY02_SL",
+      "/images/work-design-system.jpg",
     tone: "purple",
   },
   {
@@ -47,7 +47,7 @@ export const projects = [
     metric: "99 Performance",
     gradient: "from-primary/90 to-transparent",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAUBUI9QYhG0QD-AQW8AElHXue2y8ZzgMmnSKfHjck3-P0QHTNED8_qbZlOxIwoBkBeywEBNd4c7_TMKENNtY_hLLV47yu72WWoTg6cgP-2fxUGbrZabnebDNN3Pvmz8UMfsQDQ27WNJoTU2Y02-BRXiVOslRBrVzD1HPHRb_bFLh4MH98leXOFU975k1Z6MjY6B4LbFTxosk-rc3vghCNB57gPLi6cxHD1aYvq3euobuKBFGFzamS8aLXDRob1exauhCq9c62kkcSz",
+      "/images/work-storefront.jpg",
     tone: "teal",
   },
 ] as const;
