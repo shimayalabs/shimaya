@@ -1,68 +1,67 @@
-export const stats = [
-  { label: "Years Exp", value: "7+" },
-  { label: "Projects", value: "12+" },
-  { label: "Lighthouse", value: "98" },
-] as const;
-
 export const services = [
   {
-    title: "Web & Frontend Development",
+    title: "AI Solutions",
     description:
-      "Bespoke interfaces built with React and Next.js. I focus on performance, accessibility, and pixel-perfect execution that converts visitors into customers.",
-    tags: ["React", "Next.js", "Tailwind CSS"],
+      "Custom LLM integrations and predictive analytics models designed for enterprise scale and security.",
+    icon: "psychology",
+    dark: false,
+  },
+  {
+    title: "Web Development",
+    description:
+      "High-performance web applications built with Next.js, prioritizing speed, SEO, and flawless accessibility.",
+    icon: "code",
+    dark: true,
+  },
+  {
+    title: "SaaS Platforms",
+    description:
+      "End-to-end product engineering from MVP to global scale, focusing on multi-tenant architecture.",
     icon: "layers",
-    iconBg: "bg-primary-fixed",
-    iconColor: "text-primary",
+    dark: false,
   },
   {
-    title: "Full-stack Product Development",
+    title: "UI/UX Design",
     description:
-      "End-to-end engineering from database design to deployment. I build scalable backends that power dynamic user experiences for SMB growth.",
-    tags: ["TypeScript", "Node.js", "Prisma"],
-    icon: "terminal",
-    iconBg: "bg-secondary-fixed",
-    iconColor: "text-secondary",
-  },
-] as const;
-
-export const projects = [
-  {
-    title: "Antiqua Design System",
-    description: "A unified component library for a multi-brand ecosystem serving 1M+ users.",
-    category: "Enterprise Engineering",
-    metricValue: "40%",
-    metricLabel: "Dev Efficiency Boost",
-    metric: "40% Efficiency",
-    gradient: "from-on-surface/80 to-transparent",
-    image:
-      "/images/work-design-system.jpg",
-    tone: "purple",
+      "User-centric interfaces that blend aesthetic elegance with behavioral science for maximum conversion.",
+    icon: "draw",
+    dark: false,
   },
   {
-    title: "Storefront v2",
-    description: "Headless Next.js App Router migration with real-time inventory.",
-    category: "E-Commerce",
-    metricValue: "99",
-    metricLabel: "Performance",
-    metric: "99 Performance",
-    gradient: "from-primary/90 to-transparent",
-    image:
-      "/images/work-storefront.jpg",
-    tone: "teal",
+    title: "Automation",
+    description:
+      "Streamline operations with custom workflow automation that eliminates repetitive manual tasks.",
+    icon: "settings_suggest",
+    dark: false,
+  },
+  {
+    title: "Strategy",
+    description:
+      "Data-driven roadmap planning to align your technical capabilities with long-term business growth.",
+    icon: "insights",
+    dark: false,
   },
 ] as const;
 
 export const steps = [
   {
-    title: "Discovery Call",
-    body: "30-minute deep dive into your business goals, technical hurdles, and desired outcomes.",
+    title: "Discover",
+    body: "In-depth research into your users, competitors, and technical constraints.",
+    icon: "search",
   },
   {
-    title: "Proposal & Timeline",
-    body: "A detailed blueprint outlining the tech stack, milestones, and fixed-price investment.",
+    title: "Design",
+    body: "Rapid prototyping and architectural planning for a scalable foundation.",
+    icon: "architecture",
   },
   {
-    title: "Build & Deliver",
-    body: "Iterative development with weekly demos, leading to a robust, high-performance launch.",
+    title: "Develop",
+    body: "Agile engineering with continuous integration and real-time feedback loops.",
+    icon: "terminal",
+  },
+  {
+    title: "Launch",
+    body: "Strategic deployment followed by iterative optimization and scaling.",
+    icon: "rocket_launch",
   },
 ] as const;

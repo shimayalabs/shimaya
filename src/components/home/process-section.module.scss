@@ -1,0 +1,125 @@
+@use 'mixins' as m;
+
+.section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  padding-left: var(--spacing-margin-mobile);
+  padding-right: var(--spacing-margin-mobile);
+
+  @include m.md {
+    padding-left: var(--spacing-margin-desktop);
+    padding-right: var(--spacing-margin-desktop);
+  }
+}
+
+.inner {
+  max-width: var(--spacing-container-max);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 6rem;
+}
+
+.eyebrow {
+  color: var(--color-secondary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-primary);
+}
+
+.steps {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+
+  @include m.md {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+  }
+}
+
+.connectorLine {
+  display: none;
+  position: absolute;
+  top: 2.5rem;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(196, 198, 207, 0.2);
+  z-index: 0;
+
+  @include m.md {
+    display: block;
+  }
+}
+
+.step {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  &:hover .stepCircle {
+    transform: scale(1.1);
+  }
+}
+
+.stepCircle {
+  width: 6rem;
+  height: 6rem;
+  border-radius: var(--radius-full);
+  background: #ffffff;
+  border: 4px solid var(--color-background);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-secondary);
+  margin-bottom: 2rem;
+  outline: 12px solid #ffffff;
+  transition: transform 0.3s ease;
+
+  span {
+    font-size: 2.5rem;
+  }
+}
+
+.stepCircleDark {
+  composes: stepCircle;
+  background: var(--color-primary-container);
+  color: #ffffff;
+}
+
+.stepTitle {
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--color-on-surface);
+  margin-bottom: 1rem;
+}
+
+.stepBody {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--color-on-surface-variant);
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}

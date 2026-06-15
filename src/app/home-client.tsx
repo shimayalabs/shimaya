@@ -1,12 +1,13 @@
 "use client";
 
-import { ServicesSection } from "@/components/home/services-section";
-import { WorkSection } from "@/components/home/work-section";
-import { AboutSection } from "@/components/home/about-section";
-import { HomeNav } from "@/components/ui/nav";
 import { HeroSection } from "@/components/home/hero-section";
+import { ServicesSection } from "@/components/home/services-section";
+import { StatsSection } from "@/components/home/stats-section";
+import { TestimonialsSection } from "@/components/home/testimonials-section";
 import { ProcessSection } from "@/components/home/process-section";
 import { ContactSection } from "@/components/home/contact-section";
+import { CtaSection } from "@/components/home/cta-section";
+import { HomeNav } from "@/components/ui/nav";
 import { HomeFooter } from "@/components/ui/footer";
 
 export function HomeClient() {
@@ -18,18 +19,18 @@ export function HomeClient() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-surface text-on-surface">
-      <div className="mx-auto flex flex-col bg-transparent">
-        <HomeNav scrollTo={scrollTo} />
-        <main id="top">
-          <HeroSection scrollTo={scrollTo} />
-          <ServicesSection scrollTo={scrollTo} />
-          <WorkSection scrollTo={scrollTo} />
-          <ProcessSection />
-          <ContactSection />
-        </main>
-        <HomeFooter />
-      </div>
-    </div>
+    <>
+      <HomeNav scrollTo={scrollTo} />
+      <main>
+        <HeroSection scrollTo={scrollTo} />
+        <ServicesSection />
+        <StatsSection />
+        <TestimonialsSection />
+        <ProcessSection />
+        <ContactSection />
+        <CtaSection scrollTo={scrollTo} />
+      </main>
+      <HomeFooter scrollTo={scrollTo} />
+    </>
   );
 }

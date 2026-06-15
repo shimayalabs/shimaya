@@ -1,57 +1,48 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope, Inter } from "next/font/google";
-import "./globals.css";
+import { Inter } from "next/font/google";
+import "./globals.scss";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://shimayalabs.com";
-
-const manrope = Manrope({
-  variable: "--font-manrope",
-  subsets: ["latin"],
-  weight: ["400", "600", "700", "800"],
-});
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#3b309e",
+  themeColor: "#0070eb",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
 
   title: {
-    default: "Shimaya — Senior Frontend Engineer | Next.js & React",
-    template: "%s | Shimaya",
+    default: "Shimaya Labs — AI Products & Digital Engineering Agency",
+    template: "%s | Shimaya Labs",
   },
   description:
-    "Shivangi is a Senior Frontend Engineer (7+ yrs) specialising in Next.js, React & design systems. Based in Noida, India — building fast, conversion-ready web products for SMBs worldwide.",
+    "Shimaya Labs builds intelligent digital products and AI experiences for high-growth startups and enterprises. Custom LLMs, SaaS platforms, web development, and automation.",
 
   keywords: [
-    "frontend engineer Noida",
-    "Next.js developer India",
-    "React developer freelance",
-    "hire frontend developer India",
-    "web development SMB",
-    "design systems engineer",
-    "JavaScript consultant India",
-    "Next.js App Router expert",
-    "TypeScript developer",
-    "Shivangi Shukla developer",
-    "Shimaya web",
-    "senior React engineer",
+    "AI development agency",
+    "digital product engineering",
+    "SaaS platform development",
+    "Next.js agency India",
+    "LLM integration",
+    "web development agency",
+    "AI automation",
+    "enterprise software development",
+    "Shimaya Labs",
+    "frontend engineering",
     "full stack product development",
-    "Lighthouse 98 website",
   ],
 
-  authors: [{ name: "Shivangi", url: BASE_URL }],
-  creator: "Shivangi",
-  publisher: "Shimaya",
+  authors: [{ name: "Shimaya Labs", url: BASE_URL }],
+  creator: "Shimaya Labs",
+  publisher: "Shimaya Labs",
 
   alternates: {
     canonical: BASE_URL,
@@ -73,25 +64,25 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: BASE_URL,
-    siteName: "Shimaya",
-    title: "Shimaya — Senior Frontend Engineer | Next.js & React",
+    siteName: "Shimaya Labs",
+    title: "Shimaya Labs — AI Products & Digital Engineering Agency",
     description:
-      "7+ years building enterprise-grade web products. React, Next.js, design systems — end to end. 98 Lighthouse score. Book a free discovery call.",
+      "Building intelligent digital products and AI experiences for high-growth startups and enterprises. Custom LLMs, SaaS platforms, and precision-engineered web products.",
     images: [
       {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Shimaya — Senior Frontend Engineer",
+        alt: "Shimaya Labs — AI Products & Digital Engineering",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Shimaya — Senior Frontend Engineer | Next.js & React",
+    title: "Shimaya Labs — AI Products & Digital Engineering Agency",
     description:
-      "7+ years building enterprise-grade web products. React, Next.js, design systems — end to end.",
+      "Building intelligent digital products and AI experiences for high-growth startups and enterprises.",
     images: ["/opengraph-image"],
     creator: "@shimayalabs",
   },
@@ -103,92 +94,31 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Person",
-      "@id": `${BASE_URL}/#person`,
-      name: "Shivangi",
-      jobTitle: "Senior Frontend Engineer",
-      description:
-        "Senior Frontend Engineer with 7+ years of experience building high-performance Next.js and React web products for SMBs and enterprises.",
+      "@type": "Organization",
+      "@id": `${BASE_URL}/#organization`,
+      name: "Shimaya Labs",
       url: BASE_URL,
       email: "shimayalabs@gmail.com",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Noida",
-        addressRegion: "Uttar Pradesh",
-        addressCountry: "IN",
-      },
-      worksFor: {
-        "@type": "Organization",
-        name: "Shimaya",
-        url: BASE_URL,
-      },
-      alumniOf: [
-        { "@type": "Organization", name: "Monotype" },
-        { "@type": "Organization", name: "Accenture" },
-        { "@type": "Organization", name: "Publicis Sapient" },
+      description:
+        "Shimaya Labs builds intelligent digital products and AI experiences for high-growth startups and enterprises.",
+      serviceType: [
+        "AI Solutions",
+        "Web Development",
+        "SaaS Platforms",
+        "UI/UX Design",
+        "Automation",
+        "Digital Strategy",
       ],
-      knowsAbout: [
-        "React",
-        "Next.js",
-        "TypeScript",
-        "Design Systems",
-        "Web Performance",
-        "Core Web Vitals",
-        "Frontend Architecture",
-      ],
-      sameAs: [`${BASE_URL}`],
     },
     {
       "@type": "WebSite",
       "@id": `${BASE_URL}/#website`,
       url: BASE_URL,
-      name: "Shimaya",
+      name: "Shimaya Labs",
       description:
-        "Senior Frontend Engineer building fast, conversion-ready Next.js web products for SMBs.",
-      publisher: { "@id": `${BASE_URL}/#person` },
+        "AI products and digital engineering for high-growth startups and enterprises.",
+      publisher: { "@id": `${BASE_URL}/#organization` },
       inLanguage: "en-US",
-    },
-    {
-      "@type": "ProfessionalService",
-      "@id": `${BASE_URL}/#service`,
-      name: "Shimaya — Frontend Engineering Services",
-      url: BASE_URL,
-      description:
-        "Expert frontend and full-stack development services. Specialising in Next.js, React, and design systems for SMBs.",
-      provider: { "@id": `${BASE_URL}/#person` },
-      areaServed: "Worldwide",
-      serviceType: [
-        "Web Development",
-        "Frontend Engineering",
-        "Full-Stack Product Development",
-        "Design System Engineering",
-        "Next.js Development",
-        "React Development",
-      ],
-      hasOfferCatalog: {
-        "@type": "OfferCatalog",
-        name: "Engineering Services",
-        itemListElement: [
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "Web & Frontend Development",
-              description:
-                "Bespoke interfaces built with React and Next.js — performance, accessibility, and pixel-perfect execution.",
-            },
-          },
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "Full-stack Product Development",
-              description:
-                "End-to-end engineering from database design to deployment for SMB growth.",
-            },
-          },
-        ],
-      },
     },
   ],
 };
@@ -199,11 +129,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${manrope.variable} ${inter.variable} h-full scroll-smooth`}
-      suppressHydrationWarning
-    >
+    <html lang="en" className={inter.variable}>
       <head>
         <link
           rel="stylesheet"
@@ -214,9 +140,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-full bg-surface text-on-surface antialiased">
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

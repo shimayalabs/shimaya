@@ -1,0 +1,372 @@
+@use 'mixins' as m;
+
+.section {
+  background-color: var(--color-surface-container-low);
+  padding-top: 5rem;
+  padding-bottom: 8rem;
+  padding-left: var(--spacing-margin-mobile);
+  padding-right: var(--spacing-margin-mobile);
+  overflow: hidden;
+
+  @include m.md {
+    padding-left: var(--spacing-margin-desktop);
+    padding-right: var(--spacing-margin-desktop);
+  }
+}
+
+.inner {
+  max-width: var(--spacing-container-max);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Header
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-bottom: 6rem;
+
+  @include m.lg {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.headerLeft {
+  max-width: 48rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 1rem;
+  border-radius: var(--radius-full);
+  background: var(--color-primary-fixed);
+  color: var(--color-on-primary-fixed);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.badgeDot {
+  width: 0.25rem;
+  height: 0.25rem;
+  border-radius: var(--radius-full);
+  background: var(--color-secondary-container);
+}
+
+.headline {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--color-primary);
+}
+
+.headlineAccent {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-secondary-container);
+}
+
+.headerRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+
+  @include m.lg {
+    align-items: flex-end;
+  }
+}
+
+.stars {
+  display: flex;
+  gap: 0.25rem;
+  color: var(--color-secondary-container);
+}
+
+.starIcon {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.verifiedLabel {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(68, 71, 78, 0.6);
+}
+
+// Bento grid
+.bentoGrid {
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 6rem;
+}
+
+.bentoRow {
+  display: grid;
+  gap: 2rem;
+
+  @include m.md {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+// Featured card (large)
+.cardFeatured {
+  background: #ffffff;
+  border: 1px solid rgba(196, 198, 207, 0.2);
+  border-radius: 3rem;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: box-shadow 0.7s ease;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.06);
+  }
+
+  @include m.md {
+    grid-column: span 8;
+    padding: 4rem;
+  }
+}
+
+.cardFeaturedQuoteIcon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 3rem;
+  opacity: 0.03;
+  font-size: 7.5rem;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+
+  .cardFeatured:hover & {
+    opacity: 0.08;
+  }
+}
+
+.blockquoteLarge {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-primary);
+  margin-bottom: 4rem;
+  max-width: 32rem;
+  position: relative;
+  z-index: 1;
+}
+
+.blockquoteAccent {
+  color: var(--color-secondary-container);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 8px;
+}
+
+.authorRow {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.avatar {
+  width: 4rem;
+  height: 4rem;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  outline: 4px solid rgba(0, 112, 235, 0.1);
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.avatarFallback {
+  width: 4rem;
+  height: 4rem;
+  border-radius: var(--radius-full);
+  outline: 4px solid rgba(0, 112, 235, 0.1);
+  flex-shrink: 0;
+  background: var(--color-surface-container-high);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--color-on-surface-variant);
+  user-select: none;
+}
+
+.authorName {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--color-primary);
+}
+
+.authorTitle {
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-on-surface-variant);
+}
+
+// Secondary card (dark)
+.cardSecondary {
+  background: var(--color-primary-container);
+  border-radius: 3rem;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: box-shadow 0.7s ease;
+
+  &:hover {
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  }
+
+  @include m.md {
+    grid-column: span 4;
+  }
+}
+
+.blockquoteSmall {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--color-on-primary-container);
+  margin-bottom: 3rem;
+}
+
+.avatarSmall {
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  outline: 2px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.authorNameLight {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.authorTitleLight {
+  font-size: 0.625rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-on-primary-container);
+}
+
+// Third card (full width)
+.cardWide {
+  background: #ffffff;
+  border: 1px solid rgba(196, 198, 207, 0.2);
+  border-radius: 3rem;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  justify-content: space-between;
+  align-items: flex-start;
+  transition: box-shadow 0.7s ease;
+
+  &:hover {
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.06);
+  }
+
+  @include m.md {
+    grid-column: span 12;
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+  }
+}
+
+.blockquoteWide {
+  font-size: clamp(1.25rem, 2.5vw, 1.875rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  max-width: 48rem;
+}
+
+.authorRowReverse {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-shrink: 0;
+
+  @include m.md {
+    flex-direction: row-reverse;
+    text-align: right;
+  }
+}
+
+// Metrics bar
+.metricsBar {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-radius: 2rem;
+  overflow: hidden;
+  border: 1px solid rgba(196, 198, 207, 0.2);
+  background: rgba(196, 198, 207, 0.2);
+  gap: 1px;
+
+  @include m.md {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.metric {
+  background: #ffffff;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: var(--color-surface-container-low);
+  }
+}
+
+.metricValue {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+}
+
+.metricLabel {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(68, 71, 78, 0.6);
+}

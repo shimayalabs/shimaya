@@ -1,51 +1,52 @@
 "use client";
 
-import Link from "next/link";
-import { ThemeToggle } from "@/components/theme-toggle";
+import styles from "./nav.module.scss";
 
 type Props = {
   scrollTo: (id: string) => void;
 };
 
+const navLinks = [
+  { label: "Services", id: "services" },
+  // { label: "Work", id: "work" },
+  { label: "Process", id: "process" },
+  // { label: "Pricing", id: "pricing" },
+  // { label: "Blog", id: "blog" },
+  { label: "Contact", id: "contact" },
+];
+
 export function HomeNav({ scrollTo }: Props) {
   return (
-    <nav className="fixed top-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-xl border-b border-outline-variant/20">
-      <div className="max-w-full mx-auto px-8 py-4 flex items-center relative">
-        <div className="flex-1 flex justify-start">
+    <nav className={styles.nav}>
+      <div className={styles.inner}>
         <button
           type="button"
           onClick={() => scrollTo("top")}
-          className="text-xl font-bold tracking-tighter text-on-surface font-headline"
+          className={styles.logo}
         >
-          Shimaya
+          Shimaya Labs
         </button>
+
+        <div className={styles.links}>
+          {navLinks.map((link) => (
+            <button
+              key={link.id}
+              type="button"
+              onClick={() => scrollTo(link.id)}
+              className={styles.link}
+            >
+              {link.label}
+            </button>
+          ))}
         </div>
-        <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-12 font-headline tracking-tight font-semibold text-xl">
-          <button
-            type="button"
-            onClick={() => scrollTo("services")}
-            className="text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"
-          >
-            Services
-          </button>
-          <button
-            type="button"
-            onClick={() => scrollTo("work")}
-            className="text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"
-          >
-            Work
-          </button>
-        </div>
-        <div className="flex-1 flex justify-end items-center gap-6">
-          <ThemeToggle />
-          <button
-            type="button"
-            onClick={() => scrollTo("contact")}
-            className="px-5 py-2 bg-primary text-on-primary rounded-xl font-semibold text-sm hover:bg-primary-container transition-colors"
-          >
-            Book a call
-          </button>
-        </div>
+
+        <button
+          type="button"
+          onClick={() => scrollTo("contact")}
+          className={styles.cta}
+        >
+          Book a Call
+        </button>
       </div>
     </nav>
   );
