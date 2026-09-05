@@ -1,6 +1,7 @@
 "use client";
 
 import styles from "./nav.module.scss";
+import { useCalendly } from "@/components/ui/calendly-modal";
 
 type Props = {
   scrollTo: (id: string) => void;
@@ -16,6 +17,8 @@ const navLinks = [
 ];
 
 export function HomeNav({ scrollTo }: Props) {
+  const openCalendly = useCalendly();
+
   return (
     <nav className={styles.nav}>
       <div className={styles.inner}>
@@ -40,11 +43,7 @@ export function HomeNav({ scrollTo }: Props) {
           ))}
         </div>
 
-        <button
-          type="button"
-          onClick={() => scrollTo("contact")}
-          className={styles.cta}
-        >
+        <button type="button" onClick={openCalendly} className={styles.cta}>
           Book a Call
         </button>
       </div>

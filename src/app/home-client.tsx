@@ -9,6 +9,7 @@ import { ContactSection } from "@/components/home/contact-section";
 import { CtaSection } from "@/components/home/cta-section";
 import { HomeNav } from "@/components/ui/nav";
 import { HomeFooter } from "@/components/ui/footer";
+import { CalendlyProvider } from "@/components/ui/calendly-modal";
 
 export function HomeClient() {
   const scrollTo = (id: string) => {
@@ -19,18 +20,18 @@ export function HomeClient() {
   };
 
   return (
-    <>
+    <CalendlyProvider>
       <HomeNav scrollTo={scrollTo} />
       <main>
-        <HeroSection scrollTo={scrollTo} />
+        <HeroSection />
         <ServicesSection />
         <StatsSection />
         <TestimonialsSection />
         <ProcessSection />
         <ContactSection />
-        <CtaSection scrollTo={scrollTo} />
+        <CtaSection />
       </main>
-      <HomeFooter scrollTo={scrollTo} />
-    </>
+      <HomeFooter />
+    </CalendlyProvider>
   );
 }

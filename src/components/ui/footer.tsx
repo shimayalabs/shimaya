@@ -1,10 +1,7 @@
 "use client";
 
 import styles from "./footer.module.scss";
-
-type Props = {
-  scrollTo?: (id: string) => void;
-};
+import { useCalendly } from "@/components/ui/calendly-modal";
 
 const studioLinks = [
   { label: "About", href: "#" },
@@ -24,7 +21,9 @@ const socialLinks = [
   { label: "GitHub", href: "https://github.com/shimayalabs" },
 ];
 
-export function HomeFooter({ scrollTo }: Props) {
+export function HomeFooter() {
+  const openCalendly = useCalendly();
+
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>
@@ -75,10 +74,7 @@ export function HomeFooter({ scrollTo }: Props) {
                   <a href="mailto:shimayalabs@gmail.com">shimayalabs@gmail.com</a>
                 </li>
                 <li className={styles.linkItem}>
-                  <button
-                    type="button"
-                    onClick={() => scrollTo?.("contact")}
-                  >
+                  <button type="button" onClick={openCalendly}>
                     Book a call
                   </button>
                 </li>

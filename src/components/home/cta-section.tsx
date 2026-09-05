@@ -1,8 +1,5 @@
 import styles from "./cta-section.module.scss";
-
-type Props = {
-  scrollTo: (id: string) => void;
-};
+import { useCalendly } from "@/components/ui/calendly-modal";
 
 const checklist = [
   "A one-page read on scope, risks & shape",
@@ -11,7 +8,9 @@ const checklist = [
   "A start date within four weeks",
 ];
 
-export function CtaSection({ scrollTo }: Props) {
+export function CtaSection() {
+  const openCalendly = useCalendly();
+
   return (
     <section className={styles.section}>
       <div className={styles.card}>
@@ -41,7 +40,7 @@ export function CtaSection({ scrollTo }: Props) {
             <div className={styles.actions}>
               <button
                 type="button"
-                onClick={() => scrollTo("contact")}
+                onClick={openCalendly}
                 className={styles.btnPrimary}
               >
                 Book a 30-min intro

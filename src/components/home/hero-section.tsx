@@ -1,10 +1,7 @@
 "use client";
 
 import styles from "./hero-section.module.scss";
-
-type Props = {
-  scrollTo: (id: string) => void;
-};
+import { useCalendly } from "@/components/ui/calendly-modal";
 
 const techCategories = [
   {
@@ -34,7 +31,9 @@ const allTechs = techCategories.flatMap((cat) =>
 );
 const allTechsReversed = [...allTechs].reverse();
 
-export function HeroSection({ scrollTo }: Props) {
+export function HeroSection() {
+  const openCalendly = useCalendly();
+
   return (
     <section className={styles.section} id="top">
       <div className={styles.meshGradient} aria-hidden />
@@ -56,7 +55,7 @@ export function HeroSection({ scrollTo }: Props) {
           <div className={styles.actions}>
             <button
               type="button"
-              onClick={() => scrollTo("contact")}
+              onClick={openCalendly}
               className={styles.btnPrimary}
             >
               Book a Strategy Call
