@@ -20,7 +20,6 @@ const navLinks = [
 ];
 
 const phone = { label: "+91 9871719955", href: "tel:+919871719955" };
-const email = "shimayalabs@gmail.com";
 const whatsappHref = "https://wa.me/919871719955";
 
 // The mobile drawer has room for a fuller menu than the desktop bar.
