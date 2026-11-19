@@ -9,8 +9,16 @@ $accent-tint: rgba(0, 112, 235, 0.08);
 $shadow-sm: 0 2px 24px rgba(15, 23, 42, 0.06);
 $shadow-md: 0 8px 24px rgba(15, 23, 42, 0.12);
 
-// Brand gradient (same as the stats section) faded in over the solid
-// black on hover. Gradients can't be transitioned directly, so it lives on
+// Mobile drawer body (light; the banner on top stays dark).
+$drawer-bg: #ffffff;
+$drawer-text: var(--color-primary);
+$drawer-muted: var(--color-outline);
+$drawer-line: var(--color-surface-container-high);
+$drawer-hover: $accent-tint;
+$drawer-accent: var(--color-secondary-container);
+
+// Blue-to-indigo gradient (indigo from the service cards' patterns) faded
+// in over the solid blue on hover. Gradients can't be transitioned directly, so it lives on
 // a ::before layer whose opacity animates instead.
 @mixin gradient-hover {
   position: relative;
@@ -23,7 +31,7 @@ $shadow-md: 0 8px 24px rgba(15, 23, 42, 0.12);
     inset: 0;
     z-index: -1;
     border-radius: inherit;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary-container));
+    background: linear-gradient(135deg, var(--color-secondary-container), #3323cc);
     opacity: 0;
     transition: opacity 0.3s ease;
   }
@@ -57,6 +65,25 @@ $shadow-md: 0 8px 24px rgba(15, 23, 42, 0.12);
   box-shadow: $shadow-sm;
 }
 
+// The drawer lives inside <nav>, so the bar's own background paints behind
+// it. The backdrop is a separate layer instead: above the drawer (z 0),
+// below the logo/buttons (.inner, z 1, later in DOM order).
+.menuOpen.menuScrolled::before {
+  @include below-desktop {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: $nav-height;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--color-surface-container-high);
+  }
+}
+
 // While the mobile drawer is open the bar goes transparent and the drawer's
 // banner extends up behind it, so header + banner share one gradient.
 .menuOpen {
@@ -80,6 +107,30 @@ $shadow-md: 0 8px 24px rgba(15, 23, 42, 0.12);
       &:hover,
       &:active {
         background: rgba(255, 255, 255, 0.12);
+      }
+    }
+  }
+}
+
+// Scrolled drawer: the bar sits on a white frosted backdrop, so its
+// contents switch back to the normal dark colours.
+.menuOpen.menuScrolled {
+  @include below-desktop {
+    .logo {
+      color: var(--color-primary);
+
+      em {
+        color: var(--color-secondary-container);
+      }
+    }
+
+    .mobileCallIcon,
+    .mobileToggle {
+      color: var(--color-primary);
+
+      &:hover,
+      &:active {
+        background: $accent-tint;
       }
     }
   }
@@ -212,7 +263,7 @@ $shadow-md: 0 8px 24px rgba(15, 23, 42, 0.12);
   gap: 8px;
   padding: 12px 15px;
   border-radius: var(--radius-full);
-  background: var(--color-primary);
+  background: var(--color-secondary-container);
   color: var(--color-on-primary);
   font-size: 14px;
   font-weight: 500;
@@ -424,7 +475,7 @@ $shadow-md: 0 8px 24px rgba(15, 23, 42, 0.12);
     left: 0;
     right: 0;
     bottom: 0;
-    background: #ffffff;
+    background: $drawer-bg;
     padding: calc(#{$nav-height} + 20px) 20px 32px;
     overflow-y: auto;
     opacity: 0;
@@ -567,7 +618,7 @@ $shadow-md: 0 8px 24px rgba(15, 23, 42, 0.12);
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-outline);
+  color: $drawer-muted;
 }
 
 .mobileList {
@@ -586,20 +637,20 @@ $shadow-md: 0 8px 24px rgba(15, 23, 42, 0.12);
   padding: 14px;
   font-size: 18px;
   font-weight: 600;
-  color: var(--color-primary);
+  color: $drawer-text;
   text-align: left;
   transition: background 0.15s ease;
 
   &:hover,
   &:active {
-    background: $accent-tint;
+    background: $drawer-hover;
   }
 
   &:hover .mobileLinkArrow,
   &:active .mobileLinkArrow {
     opacity: 1;
     transform: translate(0, 0);
-    color: var(--color-secondary-container);
+    color: $drawer-accent;
   }
 }
 
@@ -610,14 +661,14 @@ $shadow-md: 0 8px 24px rgba(15, 23, 42, 0.12);
 
 .mobileLinkArrow {
   display: inline-flex;
-  color: var(--color-outline);
-  opacity: 0.5;
+  color: $drawer-muted;
+  opacity: 0.6;
   transform: translate(-3px, 3px);
   transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
 }
 
 .mobileChevron {
-  color: var(--color-outline);
+  color: $drawer-muted;
 }
 
 .mobileSubPanel {
@@ -654,12 +705,12 @@ $shadow-md: 0 8px 24px rgba(15, 23, 42, 0.12);
   transition: background 0.15s ease, color 0.15s ease;
 
   .icon {
-    color: var(--color-secondary-container);
+    color: $drawer-accent;
   }
 
   &:hover {
     background: #ffffff;
-    color: var(--color-secondary-container);
+    color: $drawer-accent;
   }
 }
 
@@ -669,7 +720,7 @@ $shadow-md: 0 8px 24px rgba(15, 23, 42, 0.12);
   font-weight: 600;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: var(--color-secondary-container);
+  color: $drawer-accent;
 }
 
 // ── CTA ────────────────────────────────────────
@@ -689,7 +740,7 @@ $shadow-md: 0 8px 24px rgba(15, 23, 42, 0.12);
   width: 100%;
   padding: 15px 30px;
   border-radius: var(--radius-full);
-  background: var(--color-primary);
+  background: var(--color-secondary-container);
   color: var(--color-on-primary);
   font-size: 15px;
   font-weight: 600;
@@ -699,7 +750,7 @@ $shadow-md: 0 8px 24px rgba(15, 23, 42, 0.12);
 .mobileCtaNote {
   font-size: 12px;
   text-align: center;
-  color: var(--color-outline);
+  color: $drawer-muted;
 }
 
 // ── Footer ─────────────────────────────────────
@@ -724,22 +775,22 @@ $shadow-md: 0 8px 24px rgba(15, 23, 42, 0.12);
   gap: 4px;
   padding: 8px 14px;
   border-radius: var(--radius-full);
-  border: 1px solid var(--color-surface-container-high);
+  border: 1px solid $drawer-line;
   font-size: 13px;
   font-weight: 600;
   color: var(--color-on-surface-variant);
   transition: color 0.15s, border-color 0.15s, background 0.15s;
 
   &:hover {
-    color: var(--color-secondary-container);
+    color: $drawer-accent;
     border-color: rgba(0, 112, 235, 0.25);
-    background: $accent-tint;
+    background: $drawer-hover;
   }
 }
 
 .mobileCopyright {
   font-size: 12px;
-  color: var(--color-outline);
+  color: $drawer-muted;
   text-align: center;
 }
 

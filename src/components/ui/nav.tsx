@@ -73,6 +73,9 @@ export function HomeNav({ scrollTo }: Props) {
   const openCalendly = useCalendly();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  // Drawer scrolled past its top: the transparent bar needs a backdrop so
+  // menu items don't slide visibly under the logo.
+  const [panelScrolled, setPanelScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const dropdownRef = useRef<HTMLLIElement>(null);
@@ -147,6 +150,7 @@ export function HomeNav({ scrollTo }: Props) {
         styles.nav,
         scrolled && styles.scrolled,
         mobileOpen && styles.menuOpen,
+        mobileOpen && panelScrolled && styles.menuScrolled,
       ]
         .filter(Boolean)
         .join(" ")}
@@ -266,6 +270,7 @@ export function HomeNav({ scrollTo }: Props) {
 
       <div
         id="mobile-nav-panel"
+        onScroll={(e) => setPanelScrolled(e.currentTarget.scrollTop > 8)}
         className={
           mobileOpen
             ? `${styles.mobilePanel} ${styles.mobilePanelOpen}`
@@ -289,7 +294,9 @@ export function HomeNav({ scrollTo }: Props) {
               className={styles.mobileBannerPrimary}
               aria-label={`Let's talk - call ${phone.label}`}
             >
-              <Icon name="call" size={16} />
+              {/* Material glyphs carry ~2px built-in padding; 20px here
+                  matches the 16px edge-to-edge WhatsApp mark beside it. */}
+              <Icon name="call" size={20} />
               Let&apos;s talk
             </a>
             <a
