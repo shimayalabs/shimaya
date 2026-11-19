@@ -116,7 +116,7 @@
     pointer-events: none;
   }
 
-  // Pattern — fades to transparent before reaching the edges
+  // Pattern - fades to transparent before reaching the edges
   &::before {
     content: '';
     position: absolute;

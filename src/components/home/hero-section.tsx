@@ -77,12 +77,12 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Full-width marquee — lives outside the content container */}
+      {/* Full-width marquee - lives outside the content container */}
       <div className={styles.techStack}>
         <span className={styles.techStackLabel}>Technologies We Engineer With</span>
 
         <div className={styles.marqueeWrapper} aria-hidden>
-          {/* Row 1 — scrolls left */}
+          {/* Row 1 - scrolls left */}
           <div className={styles.marqueeRow}>
             <div className={styles.marqueeTrack}>
               {[...allTechs, ...allTechs].map((tech, i) => (

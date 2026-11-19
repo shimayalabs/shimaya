@@ -3,7 +3,7 @@ import { useCalendly } from "@/components/ui/calendly-modal";
 
 const checklist = [
   "A one-page read on scope, risks & shape",
-  "A fixed-fee proposal — no hourly games",
+  "A fixed-fee proposal - no hourly games",
   "Three reference clients you can call",
   "A start date within four weeks",
 ];
@@ -33,7 +33,7 @@ export function CtaSection() {
 
             <p className={styles.body}>
               Tell us what you&apos;re building. We&apos;ll come back inside 24 hours with a
-              sharp read on whether we&apos;re the right team — and what the first six weeks
+              sharp read on whether we&apos;re the right team - and what the first six weeks
               could look like.
             </p>
 

@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
 
   title: {
-    default: "Shimaya Labs — AI Products & Digital Engineering Agency",
+    default: "Shimaya Labs - AI Products & Digital Engineering Agency",
     template: "%s | Shimaya Labs",
   },
   description:
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: BASE_URL,
     siteName: "Shimaya Labs",
-    title: "Shimaya Labs — AI Products & Digital Engineering Agency",
+    title: "Shimaya Labs - AI Products & Digital Engineering Agency",
     description:
       "Building intelligent digital products and AI experiences for high-growth startups and enterprises. Custom LLMs, SaaS platforms, and precision-engineered web products.",
     images: [
@@ -80,14 +80,14 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Shimaya Labs — AI Products & Digital Engineering",
+        alt: "Shimaya Labs - AI Products & Digital Engineering",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Shimaya Labs — AI Products & Digital Engineering Agency",
+    title: "Shimaya Labs - AI Products & Digital Engineering Agency",
     description:
       "Building intelligent digital products and AI experiences for high-growth startups and enterprises.",
     images: ["/opengraph-image"],

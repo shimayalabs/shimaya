@@ -42,13 +42,13 @@ export function AboutSection() {
             <p className={styles.body}>
               Shimaya Labs is an AI and digital engineering studio. We help high-growth
               startups and established enterprises turn ambitious ideas into intelligent,
-              production-ready products — from AI solutions and SaaS platforms to web
+              production-ready products - from AI solutions and SaaS platforms to web
               experiences and automation.
             </p>
             <p className={styles.body}>
               We work as an extension of your team: small, senior and hands-on. Every
-              engagement follows the same disciplined path — discover, design, develop,
-              launch — so you always know where your product stands and what comes next.
+              engagement follows the same disciplined path - discover, design, develop,
+              launch - so you always know where your product stands and what comes next.
             </p>
 
             <dl className={styles.facts}>

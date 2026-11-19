@@ -3,12 +3,12 @@ import styles from "./services-section.module.scss";
 
 const cardColors: { dark: boolean; pattern: string }[] = [
   {
-    // 01 AI Solutions — dot grid
+    // 01 AI Solutions - dot grid
     dark: false,
     pattern: "radial-gradient(circle, rgba(0,88,188,0.087) 1.5px, transparent 1.5px) 0 0 / 20px 20px",
   },
   {
-    // 02 Web Development — square grid lines
+    // 02 Web Development - square grid lines
     dark: false,
     pattern: [
       "linear-gradient(rgba(0,88,188,0.087) 1px, transparent 1px) 0 0 / 24px 24px",
@@ -16,17 +16,17 @@ const cardColors: { dark: boolean; pattern: string }[] = [
     ].join(", "),
   },
   {
-    // 03 SaaS Platforms — diagonal stripes 45°
+    // 03 SaaS Platforms - diagonal stripes 45°
     dark: false,
     pattern: "repeating-linear-gradient(45deg, rgba(51,35,204,0.065) 0px, rgba(51,35,204,0.065) 1px, transparent 1px, transparent 14px)",
   },
   {
-    // 04 Automation — larger dots
+    // 04 Automation - larger dots
     dark: false,
     pattern: "radial-gradient(circle, rgba(0,88,188,0.108) 2px, transparent 2px) 0 0 / 28px 28px",
   },
   {
-    // 05 UI/UX Design — crosshatch (H + V lines)
+    // 05 UI/UX Design - crosshatch (H + V lines)
     dark: false,
     pattern: [
       "repeating-linear-gradient(0deg, rgba(51,35,204,0.065) 0px, rgba(51,35,204,0.065) 1px, transparent 1px, transparent 18px)",
@@ -34,7 +34,7 @@ const cardColors: { dark: boolean; pattern: string }[] = [
     ].join(", "),
   },
   {
-    // 06 Strategy — diagonal crosshatch (45° + 135°)
+    // 06 Strategy - diagonal crosshatch (45° + 135°)
     dark: false,
     pattern: [
       "repeating-linear-gradient(45deg, rgba(0,88,188,0.065) 0px, rgba(0,88,188,0.065) 1px, transparent 1px, transparent 16px)",

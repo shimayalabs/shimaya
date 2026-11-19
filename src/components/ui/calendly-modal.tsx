@@ -33,7 +33,7 @@ export function CalendlyProvider({ children }: { children: ReactNode }) {
   const openCalendly = useCallback(() => {
     if (!CALENDLY_URL) {
       console.error(
-        "NEXT_PUBLIC_CALENDLY_URL is not set — cannot open the Calendly booking modal."
+        "NEXT_PUBLIC_CALENDLY_URL is not set - cannot open the Calendly booking modal."
       );
       return;
     }

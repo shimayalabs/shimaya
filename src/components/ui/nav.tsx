@@ -24,12 +24,12 @@ const email = "shimayalabs@gmail.com";
 
 // The mobile drawer has room for a fuller menu than the desktop bar.
 const mobileLinks = [
-  { label: "Home", id: "top", icon: "home" },
-  { label: "Services", id: "services", icon: "widgets" },
-  { label: "About", id: "about", icon: "diversity_3" },
-  { label: "Process", id: "process", icon: "route" },
-  { label: "Testimonials", id: "testimonials", icon: "reviews" },
-  { label: "Contact", id: "contact", icon: "mail" },
+  { label: "Home", id: "top" },
+  { label: "Services", id: "services" },
+  { label: "About", id: "about" },
+  { label: "Process", id: "process" },
+  { label: "Testimonials", id: "testimonials" },
+  { label: "Contact", id: "contact" },
 ];
 
 const quickActions = [
@@ -132,7 +132,13 @@ export function HomeNav({ scrollTo }: Props) {
 
   return (
     <nav
-      className={scrolled ? `${styles.nav} ${styles.scrolled}` : styles.nav}
+      className={[
+        styles.nav,
+        scrolled && styles.scrolled,
+        mobileOpen && styles.menuOpen,
+      ]
+        .filter(Boolean)
+        .join(" ")}
       aria-label="Primary"
     >
       <div className={styles.inner}>
@@ -255,6 +261,19 @@ export function HomeNav({ scrollTo }: Props) {
             : styles.mobilePanel
         }
       >
+        <div className={styles.mobileBanner}>
+          <span className={styles.mobileBannerBadge}>
+            <span className={styles.mobileBannerDot} aria-hidden />
+            Now booking new projects
+          </span>
+          <p className={styles.mobileBannerTitle}>
+            Have an idea? Let&apos;s build it together.
+          </p>
+          <p className={styles.mobileBannerText}>
+            AI products, SaaS platforms &amp; web experiences - engineered to scale.
+          </p>
+        </div>
+
         <p className={styles.mobileSectionLabel} style={stagger(0)}>
           Menu
         </p>
@@ -269,9 +288,6 @@ export function HomeNav({ scrollTo }: Props) {
                   aria-controls="mobile-services-panel"
                   onClick={() => setMobileServicesOpen((prev) => !prev)}
                 >
-                  <span className={styles.mobileLinkIcon}>
-                    <Icon name={link.icon} size={20} />
-                  </span>
                   <span className={styles.mobileLinkLabel}>{link.label}</span>
                   <span
                     className={
@@ -324,9 +340,6 @@ export function HomeNav({ scrollTo }: Props) {
                   onClick={() => go(link.id)}
                   className={styles.mobileLink}
                 >
-                  <span className={styles.mobileLinkIcon}>
-                    <Icon name={link.icon} size={20} />
-                  </span>
                   <span className={styles.mobileLinkLabel}>{link.label}</span>
                   <span className={styles.mobileLinkArrow}>
                     <Icon name="arrow_outward" size={18} />

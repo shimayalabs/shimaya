@@ -136,7 +136,7 @@ export function HomeFooter() {
 
         <div className={styles.bottomBar}>
           <p className={styles.copyright}>
-            © 2026 Shimaya Labs · All rights reserved
+            © {new Date().getFullYear()} Shimaya Labs · All rights reserved
           </p>
           <div className={styles.bottomRight}>
             <div className={styles.legalLinks}>
