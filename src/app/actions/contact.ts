@@ -74,7 +74,7 @@ export async function sendContactEmail(
           </table>
           <div style="margin-top:24px;padding-top:24px;border-top:1px solid #dde2f3">
             <a href="mailto:${email}" style="display:inline-block;background:#3b309e;color:#ffffff;padding:12px 24px;border-radius:8px;font-weight:600;font-size:14px;text-decoration:none">
-              Reply to ${name} →
+              Reply to ${name} ↗
             </a>
           </div>
         </div>

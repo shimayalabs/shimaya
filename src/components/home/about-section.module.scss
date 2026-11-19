@@ -1,0 +1,156 @@
+@use 'mixins' as m;
+
+.section {
+  padding-top: var(--spacing-section);
+  padding-bottom: var(--spacing-section);
+  padding-left: var(--spacing-margin-mobile);
+  padding-right: var(--spacing-margin-mobile);
+  background: var(--color-surface);
+  // Clear the fixed header when jumped to from the nav.
+  scroll-margin-top: 68px;
+
+  @include m.md {
+    padding-left: var(--spacing-margin-desktop);
+    padding-right: var(--spacing-margin-desktop);
+  }
+}
+
+.inner {
+  max-width: var(--spacing-container-max);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  align-items: center;
+
+  @include m.lg {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: 5rem;
+  }
+}
+
+// ── Copy column ────────────────────────────────────────────────
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.eyebrow {
+  display: inline-block;
+  width: fit-content;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--color-primary);
+}
+
+.body {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--color-on-surface-variant);
+  max-width: 56ch;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--color-surface-container-high);
+
+  @include m.sm {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.factLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-outline);
+}
+
+.factValue {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+// ── Principles ─────────────────────────────────────────────────
+
+.principles {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+
+  @include m.sm {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.principle {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.75rem;
+  border-radius: var(--radius-2xl);
+  background: #ffffff;
+  border: 1px solid rgba(196, 198, 207, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+  }
+}
+
+.principleIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-lg);
+  background: rgba(0, 112, 235, 0.08);
+  color: var(--color-secondary-container);
+}
+
+.principleTitle {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-primary);
+}
+
+.principleText {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-on-surface-variant);
+}

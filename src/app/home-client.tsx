@@ -2,6 +2,7 @@
 
 import { HeroSection } from "@/components/home/hero-section";
 import { ServicesSection } from "@/components/home/services-section";
+import { AboutSection } from "@/components/home/about-section";
 import { StatsSection } from "@/components/home/stats-section";
 import { TestimonialsSection } from "@/components/home/testimonials-section";
 import { ProcessSection } from "@/components/home/process-section";
@@ -25,6 +26,7 @@ export function HomeClient() {
       <main>
         <HeroSection />
         <ServicesSection />
+        <AboutSection />
         <StatsSection />
         <TestimonialsSection />
         <ProcessSection />

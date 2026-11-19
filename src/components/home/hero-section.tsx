@@ -7,22 +7,22 @@ const techCategories = [
   {
     label: "Frontend",
     color: "#0070eb",
-    techs: ["Next.js", "React", "Vue.js", "TypeScript"],
+    techs: ["NextJs", "ReactJs", "VueJs", "TypeScript", "SCSS"],
   },
   {
     label: "Backend",
     color: "#6366f1",
-    techs: ["Node.js", "NestJS", "PostgreSQL", "GraphQL"],
+    techs: ["NodeJs", "NestJS", "PostgreSQL", "GraphQL"],
   },
   {
     label: "Cloud",
     color: "#06b6d4",
-    techs: ["AWS", "Docker", "Kubernetes"],
+    techs: ["AWS", "GCP", "Azure"],
   },
   {
     label: "AI",
     color: "#f59e0b",
-    techs: ["OpenAI", "Claude"],
+    techs: ["OpenAI", "Claude", "Gemini"],
   },
 ];
 
@@ -60,7 +60,7 @@ export function HeroSection() {
             >
               Book a Strategy Call
               <span className={`material-symbols-outlined ${styles.icon}`} aria-hidden>
-                arrow_forward
+                arrow_outward
               </span>
             </button>
             {/* <button

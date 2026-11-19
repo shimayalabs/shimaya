@@ -1,13 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.scss";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://shimayalabs.com";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+// Self-hosted Archivo (same files as the Stackave site) so builds don't
+// depend on a Google Fonts network fetch.
+const archivo = localFont({
+  src: [
+    { path: "./fonts/archivo-400.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/archivo-500.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/archivo-600.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/archivo-700.woff2", weight: "700", style: "normal" },
+  ],
+  variable: "--font-archivo",
+  display: "swap",
 });
 
 export const viewport: Viewport = {
@@ -129,7 +136,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={archivo.variable}>
       <head>
         <link
           rel="stylesheet"

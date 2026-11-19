@@ -107,3 +107,6 @@ export const steps = [
     icon: "rocket_launch",
   },
 ] as const;
+
+export const serviceId = (title: string) =>
+  `service-${title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}`;

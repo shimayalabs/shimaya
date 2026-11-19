@@ -1,74 +1,707 @@
 @use 'mixins' as m;
 
-.nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 50;
-  background: rgba(247, 249, 251, 0.8);
-  backdrop-filter: blur(24px);
-  border-bottom: 1px solid rgba(196, 198, 207, 0.1);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
-  transition: all 0.3s ease;
-}
+// Header layout and behaviour mirror the Stackave navbar: centred links
+// with tilted dividers, call + consultation CTA on the right, shadow on
+// scroll, and a full-screen menu at tablet/mobile widths (≤1023px).
 
-.inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: var(--spacing-container-max);
-  margin-left: auto;
-  margin-right: auto;
-  padding: 1rem var(--spacing-margin-mobile);
+$nav-height: 68px;
+$accent-tint: rgba(0, 112, 235, 0.08);
+$shadow-sm: 0 2px 24px rgba(15, 23, 42, 0.06);
+$shadow-md: 0 8px 24px rgba(15, 23, 42, 0.12);
 
-  @include m.md {
-    padding: 1rem var(--spacing-margin-desktop);
+// Brand gradient (same as the stats section) faded in over the solid
+// black on hover. Gradients can't be transitioned directly, so it lives on
+// a ::before layer whose opacity animates instead.
+@mixin gradient-hover {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary-container));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover::before,
+  &:focus-visible::before {
+    opacity: 1;
   }
 }
 
+@mixin below-desktop {
+  @media (max-width: 1023px) {
+    @content;
+  }
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.97);
+  border-bottom: 1px solid var(--color-surface-container-high);
+  box-shadow: none;
+  transition: box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: $shadow-sm;
+}
+
+// Equal flanking columns keep the links truly centred regardless of how
+// wide the logo and CTA group are.
+.inner {
+  display: grid;
+  // minmax(0, 1fr) rather than plain 1fr: plain 1fr won't shrink below
+  // its content, so a wide CTA group would push the links off-centre.
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  height: $nav-height;
+  max-width: var(--spacing-container-max);
+  margin: 0 auto;
+  padding: 0 var(--spacing-margin-mobile);
+
+  @include m.md {
+    padding: 0 var(--spacing-margin-desktop);
+  }
+}
+
+.icon {
+  line-height: 1;
+}
+
 .logo {
-  font-size: 1.25rem;
+  justify-self: start;
+  font-size: 2rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+
+  @media (max-width: 767px) {
+    font-size: 1.5rem;
+  }
   color: var(--color-primary);
+  transition: opacity 0.15s ease;
+
+  em {
+    font-style: normal;
+    color: var(--color-secondary-container);
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .links {
-  display: none;
+  display: flex;
   align-items: center;
-  gap: 3rem;
+  gap: 36px;
+  list-style: none;
 
-  @include m.md {
-    display: flex;
+  > li {
+    position: relative;
+  }
+
+  // Tilted divider centred in the gap between adjacent items.
+  > li:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -18px;
+    width: 1.5px;
+    height: 16px;
+    background: #d6dae3;
+    transform: translate(50%, -50%) rotate(16deg);
+  }
+
+  // Four links + the CTA group get tight just above the mobile breakpoint.
+  @media (max-width: 1279px) {
+    gap: 24px;
+
+    > li:not(:last-child)::after {
+      right: -12px;
+    }
+  }
+
+  @include below-desktop {
+    display: none;
   }
 }
 
 .link {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
   color: var(--color-on-surface-variant);
-  font-size: 0.9375rem;
+  transition: color 0.15s;
+
+  &:hover {
+    color: var(--color-secondary-container);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-secondary-container);
+    outline-offset: 4px;
+  }
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  gap: 20px;
+
+  @media (max-width: 1279px) {
+    gap: 14px;
+  }
+
+  @include below-desktop {
+    display: none;
+  }
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 15px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font-size: 14px;
   font-weight: 500;
-  transition: color 0.3s ease;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  transition: background 0.15s, box-shadow 0.15s, transform 0.2s ease;
+  @include gradient-hover;
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 112, 235, 0.25);
+  }
+}
+
+// ── Services dropdown ────────────────────────────────────────────────────
+
+// Spans the full bar height so the panel's `top: 100%` sits flush with the
+// header's bottom edge and the pointer never crosses a gap.
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  height: $nav-height;
+}
+
+.chevron,
+.mobileChevron {
+  display: inline-flex;
+  transition: transform 0.2s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.panel {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: min(640px, calc(100vw - 48px));
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid var(--color-surface-container-high);
+  border-top: 3px solid var(--color-secondary-container);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  box-shadow: $shadow-md;
+  transform: translateX(-50%) translateY(-4px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  z-index: 110;
+}
+
+.panelOpen {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+.groupLabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-secondary-container);
+  margin: 0 0 10px 10px;
+}
+
+.panelGrid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.subLink {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  padding: 10px;
+  border-radius: var(--radius-base);
+  text-align: left;
+  transition: background 0.15s ease;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--color-surface-container-low);
+  }
+
+  &:hover .subTitle,
+  &:focus-visible .subTitle {
+    color: var(--color-secondary-container);
+  }
+}
+
+.subIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-base);
+  background: $accent-tint;
+  color: var(--color-secondary-container);
+}
+
+.subText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.subTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-primary);
+  transition: color 0.15s ease;
+}
+
+.subDesc {
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--color-on-surface-variant);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.panelFooterLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 12px 0 0 10px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--color-secondary-container);
+
+  .icon {
+    transition: transform 0.2s ease;
+  }
+
+  &:hover .icon {
+    transform: translate(3px, -3px);
+  }
+}
+
+// ── Mobile / tablet ──────────────────────────────────────────────────────
+
+.mobileActions {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  grid-column: 3;
+  justify-self: end;
+
+  @include below-desktop {
+    display: flex;
+  }
+}
+
+.mobileCallIcon,
+.mobileToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  color: var(--color-primary);
+  transition: background 0.15s ease;
+
+  &:hover,
+  &:active {
+    background: $accent-tint;
+  }
+}
+
+.mobileCallIcon {
+  width: 40px;
+  height: 40px;
+}
+
+.mobileToggle {
+  width: 40px;
+  height: 40px;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-secondary-container);
+    outline-offset: 2px;
+  }
+}
+
+.mobilePanel {
+  display: none;
+
+  @include below-desktop {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: $nav-height;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ffffff;
+    border-top: 1px solid var(--color-surface-container-high);
+    padding: 20px 20px 32px;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
+    z-index: 99;
+  }
+}
+
+.mobilePanelOpen {
+  @include below-desktop {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+}
+
+.mobileSectionLabel {
+  margin: 4px 14px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-outline);
+}
+
+.mobileList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mobileLink {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-align: left;
+  transition: background 0.15s ease;
+
+  &:hover,
+  &:active {
+    background: $accent-tint;
+  }
+
+  &:hover .mobileLinkArrow,
+  &:active .mobileLinkArrow {
+    opacity: 1;
+    transform: translate(0, 0);
+    color: var(--color-secondary-container);
+  }
+}
+
+.mobileLinkIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-base);
+  background: var(--color-surface-container-low);
+  color: var(--color-secondary-container);
+}
+
+.mobileLinkLabel {
+  flex: 1;
+  min-width: 0;
+}
+
+.mobileLinkArrow {
+  display: inline-flex;
+  color: var(--color-outline);
+  opacity: 0.5;
+  transform: translate(-3px, 3px);
+  transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.mobileChevron {
+  color: var(--color-outline);
+}
+
+.mobileSubPanel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobileSubPanelOpen {
+  max-height: 600px;
+}
+
+// Indented to line up under the "Services" label, past its icon tile.
+.mobileSubPanelCard {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 4px 4px 8px 66px;
+  padding: 8px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-container-low);
+}
+
+.mobileSubLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  color: var(--color-on-surface);
+  text-align: left;
+  transition: background 0.15s ease, color 0.15s ease;
+
+  .icon {
+    color: var(--color-secondary-container);
+  }
+
+  &:hover {
+    background: #ffffff;
+    color: var(--color-secondary-container);
+  }
+}
+
+.mobileSubLinkAll {
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--color-secondary-container);
+}
+
+// ── Get in touch ───────────────────────────────
+
+.mobileContact {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-surface-container-high);
+}
+
+.mobileQuickActions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.mobileQuickAction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 8px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-surface-container-high);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-primary);
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+
+  &:hover,
+  &:active {
+    background: $accent-tint;
+    border-color: rgba(0, 112, 235, 0.25);
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+.mobileQuickIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.mobileEmail {
+  display: block;
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  color: var(--color-on-surface-variant);
+  transition: color 0.15s;
 
   &:hover {
     color: var(--color-secondary-container);
   }
 }
 
-.cta {
+// ── CTA ────────────────────────────────────────
+
+.mobileCta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.mobileCtaBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 15px 30px;
+  border-radius: var(--radius-full);
   background: var(--color-primary);
   color: var(--color-on-primary);
-  padding: 0.625rem 1.5rem;
-  border-radius: var(--radius-full);
-  font-size: 0.875rem;
+  font-size: 15px;
   font-weight: 600;
-  letter-spacing: 0.05em;
-  transition: opacity 0.2s ease, transform 0.1s ease;
+  @include gradient-hover;
+}
+
+.mobileCtaNote {
+  font-size: 12px;
+  text-align: center;
+  color: var(--color-outline);
+}
+
+// ── Footer ─────────────────────────────────────
+
+.mobileFooter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+.mobileSocials {
+  display: flex;
+  gap: 10px;
+}
+
+.mobileSocial {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 14px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-surface-container-high);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-on-surface-variant);
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
 
   &:hover {
-    opacity: 0.9;
+    color: var(--color-secondary-container);
+    border-color: rgba(0, 112, 235, 0.25);
+    background: $accent-tint;
+  }
+}
+
+.mobileCopyright {
+  font-size: 12px;
+  color: var(--color-outline);
+  text-align: center;
+}
+
+// ── Staggered entrance ─────────────────────────
+// Items carry --i (set inline) and slide up one after another when the
+// drawer opens; they reset instantly when it closes.
+
+.mobilePanel [style*='--i'] {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.mobilePanelOpen [style*='--i'] {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  transition-delay: calc(var(--i) * 40ms + 60ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobilePanel,
+  .mobilePanelOpen,
+  .panel,
+  .mobileSubPanel,
+  .chevron,
+  .mobileChevron {
+    transition: none;
   }
 
-  &:active {
-    transform: scale(0.95);
+  .mobilePanel [style*='--i'],
+  .mobilePanelOpen [style*='--i'] {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }

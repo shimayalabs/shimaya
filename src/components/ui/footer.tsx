@@ -4,7 +4,7 @@ import styles from "./footer.module.scss";
 import { useCalendly } from "@/components/ui/calendly-modal";
 
 const studioLinks = [
-  { label: "About", href: "#" },
+  { label: "About", href: "#about" },
   { label: "Process", href: "#process" },
 ];
 
@@ -20,6 +20,27 @@ const socialLinks = [
   { label: "LinkedIn", href: "https://www.linkedin.com/company/shimayalabs/" },
   { label: "GitHub", href: "https://github.com/shimayalabs" },
 ];
+
+// Same diagonal arrow as Stackave's footer (lucide ArrowUpRight), revealed on hover.
+function LinkArrow() {
+  return (
+    <svg
+      className={styles.linkArrow}
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M7 7h10v10" />
+      <path d="M7 17 17 7" />
+    </svg>
+  );
+}
 
 export function HomeFooter() {
   const openCalendly = useCalendly();
@@ -40,7 +61,7 @@ export function HomeFooter() {
               </span>
             </div>
             <p className={styles.brandTagline}>
-              Engineered intelligence for modern teams. Made in India.
+              Engineered intelligence for modern teams. Made with <span role="img" aria-label="love">❤️</span> in India.
             </p>
           </div>
 
@@ -50,7 +71,10 @@ export function HomeFooter() {
               <ul className={styles.linkList}>
                 {studioLinks.map((link) => (
                   <li key={link.label} className={styles.linkItem}>
-                    <a href={link.href}>{link.label}</a>
+                    <a href={link.href}>
+                      <span>{link.label}</span>
+                      <LinkArrow />
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -61,7 +85,10 @@ export function HomeFooter() {
               <ul className={styles.linkList}>
                 {serviceLinks.map((link) => (
                   <li key={link.label} className={styles.linkItem}>
-                    <a href={link.href}>{link.label}</a>
+                    <a href={link.href}>
+                      <span>{link.label}</span>
+                      <LinkArrow />
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -71,16 +98,21 @@ export function HomeFooter() {
               <h4 className={styles.linkGroupTitle}>Contact</h4>
               <ul className={styles.linkList}>
                 <li className={styles.linkItem}>
-                  <a href="mailto:shimayalabs@gmail.com">shimayalabs@gmail.com</a>
+                  <a href="mailto:shimayalabs@gmail.com">
+                    <span>shimayalabs@gmail.com</span>
+                    <LinkArrow />
+                  </a>
                 </li>
                 <li className={styles.linkItem}>
                   <button type="button" onClick={openCalendly}>
-                    Book a call
+                    <span>Book a call</span>
+                    <LinkArrow />
                   </button>
                 </li>
                 <li className={styles.linkItem}>
                   <a href="#">
-                    Careers
+                    <span>Careers</span>
+                    <LinkArrow />
                   </a>
                 </li>
               </ul>
@@ -91,7 +123,10 @@ export function HomeFooter() {
               <ul className={styles.linkList}>
                 {socialLinks.map((link) => (
                   <li key={link.label} className={styles.linkItem}>
-                    <a href={link.href}>{link.label}</a>
+                    <a href={link.href} target="_blank" rel="noopener noreferrer">
+                      <span>{link.label}</span>
+                      <LinkArrow />
+                    </a>
                   </li>
                 ))}
               </ul>

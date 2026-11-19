@@ -17,7 +17,7 @@ body {
   min-height: 100%;
   background-color: var(--color-background);
   color: var(--color-on-surface);
-  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-family: var(--font-family-base);
   font-size: 16px;
   line-height: 1.6;
   font-weight: 400;
@@ -29,6 +29,13 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
 }
 
 button {

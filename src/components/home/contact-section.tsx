@@ -62,7 +62,12 @@ export function ContactSection() {
                 </div>
               </a>
 
-              <a href="https://wa.me/919311578855" className={styles.contactLink}>
+              <a
+                href="https://wa.me/919871719955"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.contactLink}
+              >
                 <div className={styles.contactIconWrap}>
                   <span className="material-symbols-outlined" aria-hidden>
                     chat
@@ -70,7 +75,7 @@ export function ContactSection() {
                 </div>
                 <div>
                   <p className={styles.contactLabel}>WhatsApp</p>
-                  <p className={styles.contactValue}>+91 9311578855</p>
+                  <p className={styles.contactValue}>+91 9871719955</p>
                 </div>
               </a>
             </div>

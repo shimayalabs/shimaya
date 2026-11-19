@@ -122,10 +122,29 @@
   cursor: pointer;
   font-family: inherit;
   text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
 
   &:hover {
     opacity: 0.6;
   }
+}
+
+.linkArrow {
+  flex-shrink: 0;
+  opacity: 0;
+  transform: translate(-3px, 3px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.linkItem a:hover .linkArrow,
+.linkItem button:hover .linkArrow,
+.linkItem a:focus-visible .linkArrow,
+.linkItem button:focus-visible .linkArrow {
+  opacity: 1;
+  transform: translate(0, 0);
 }
 
 .linkAccent {

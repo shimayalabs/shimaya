@@ -45,7 +45,7 @@ export function CtaSection() {
               >
                 Book a 30-min intro
                 <span className={`material-symbols-outlined ${styles.icon}`} aria-hidden>
-                  arrow_forward
+                  arrow_outward
                 </span>
               </button>
               <a href="mailto:shimayalabs@gmail.com" className={styles.btnSecondary}>

@@ -1,4 +1,4 @@
-import { services } from "./home-data";
+import { services, serviceId } from "./home-data";
 import styles from "./services-section.module.scss";
 
 const cardColors: { dark: boolean; pattern: string }[] = [
@@ -67,6 +67,7 @@ export function ServicesSection() {
             return (
               <div
                 key={service.title}
+                id={serviceId(service.title)}
                 className={dark ? styles.cardDark : styles.card}
                 style={{ "--card-pattern": pattern } as React.CSSProperties}
               >
@@ -91,7 +92,7 @@ export function ServicesSection() {
                         className={`material-symbols-outlined ${dark ? styles.featIconDark : styles.featIcon}`}
                         aria-hidden
                       >
-                        arrow_right
+                        arrow_outward
                       </span>
                       {feat}
                     </li>
