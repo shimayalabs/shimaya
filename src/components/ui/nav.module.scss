@@ -94,10 +94,8 @@ $drawer-accent: var(--color-secondary-container);
 
     .logo {
       color: var(--color-on-primary);
-
-      em {
-        color: #4da3ff;
-      }
+      // Lighter blue-to-violet so "Labs" stays readable on the dark banner.
+      --logo-gradient: linear-gradient(90deg, #4da3ff 0%, #9d8cff 100%);
     }
 
     .mobileCallIcon,
@@ -118,10 +116,7 @@ $drawer-accent: var(--color-secondary-container);
   @include below-desktop {
     .logo {
       color: var(--color-primary);
-
-      em {
-        color: var(--color-secondary-container);
-      }
+      --logo-gradient: initial;
     }
 
     .mobileCallIcon,
@@ -162,6 +157,11 @@ $drawer-accent: var(--color-secondary-container);
 }
 
 .logo {
+  // Flex (not the default inline formatting) so the inner logo doesn't sit
+  // on a text baseline - that left a descender-sized gap under it and
+  // pushed the logo ~3px above the bar's true centre.
+  display: flex;
+  align-items: center;
   justify-self: start;
   font-size: 2rem;
   font-weight: 700;
@@ -173,16 +173,7 @@ $drawer-accent: var(--color-secondary-container);
     font-size: 1.5rem;
   }
   color: var(--color-primary);
-  transition: opacity 0.15s ease, color 0.25s ease;
-
-  em {
-    font-style: normal;
-    color: var(--color-secondary-container);
-  }
-
-  &:hover {
-    opacity: 0.8;
-  }
+  transition: color 0.25s ease;
 }
 
 .links {

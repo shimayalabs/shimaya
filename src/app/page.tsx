@@ -3,10 +3,10 @@ import { HomeClient } from "./home-client";
 
 export const metadata: Metadata = {
   title:
-    "ShimayaLabs | Web Development Agency for SMBs in Noida & India",
+    "Shimaya Labs | Web Development Agency for SMBs in Noida & India",
   
   description:
-    "ShimayaLabs builds high-performance websites, SaaS platforms, and eCommerce solutions for SMBs. Fast, SEO-optimized, and conversion-focused web development agency based in Noida, India.",
+    "Shimaya Labs builds high-performance websites, SaaS platforms, and eCommerce solutions for SMBs. Fast, SEO-optimized, and conversion-focused web development agency based in Noida, India.",
 
   keywords: [
     "web development agency India",
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
     "SaaS development India"
   ],
 
-  authors: [{ name: "ShimayaLabs" }],
-  creator: "ShimayaLabs",
+  authors: [{ name: "Shimaya Labs" }],
+  creator: "Shimaya Labs",
 
   alternates: {
     canonical: "https://shimaya.co.in/",
@@ -27,17 +27,17 @@ export const metadata: Metadata = {
 
   openGraph: {
     title:
-      "ShimayaLabs | High-Performance Web Development for SMBs",
+      "Shimaya Labs | High-Performance Web Development for SMBs",
     description:
       "We build fast, scalable, and SEO-optimized websites for SMBs. Get a modern website that converts visitors into customers.",
     url: "https://shimaya.co.in/",
-    siteName: "ShimayaLabs",
+    siteName: "Shimaya Labs",
     images: [
       {
         url: "https://shimaya.co.in/opengraph-image.jpg",
         width: 1200,
         height: 630,
-        alt: "ShimayaLabs Web Development Agency",
+        alt: "Shimaya Labs Web Development Agency",
       },
     ],
     locale: "en_IN",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "ShimayaLabs | Web Development Agency for SMBs",
+      "Shimaya Labs | Web Development Agency for SMBs",
     description:
       "Custom websites, SaaS platforms & eCommerce solutions built for growth.",
     images: ["https://shimaya.co.in/opengraph-image.jpg"],

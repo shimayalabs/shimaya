@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./nav.module.scss";
 import { useCalendly } from "@/components/ui/calendly-modal";
 import { services, serviceId } from "@/components/home/home-data";
+import { Logo } from "@/components/ui/logo";
 
 type Props = {
   scrollTo: (id: string) => void;
@@ -163,7 +164,7 @@ export function HomeNav({ scrollTo }: Props) {
           className={styles.logo}
           aria-label="Shimaya Labs home"
         >
-          Shimaya <em>Labs</em>
+          <Logo />
         </button>
 
         <ul className={styles.links}>

@@ -1,0 +1,46 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.mark {
+  flex-shrink: 0;
+  width: 1.15em;
+  height: 1.15em;
+  border-radius: 0.3em;
+  box-shadow: 0 0.12em 0.4em rgba(0, 112, 235, 0.3);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+// Playful tilt when the logo (or a link wrapping it) is hovered.
+.logo:hover .mark,
+:hover > .logo .mark {
+  transform: rotate(-8deg) scale(1.05);
+}
+
+.wordmark {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+
+  em {
+    font-style: normal;
+    font-weight: 700;
+    // Brand blue-to-indigo, matching the mark. Parents can override via
+    // --logo-gradient (e.g. a lighter version on dark bars).
+    background: var(--logo-gradient, linear-gradient(90deg, #0070eb 0%, #3323cc 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    // Keeps the right edge of the "s" from being clipped by the text box.
+    padding-right: 0.02em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mark {
+    transition: none;
+  }
+}

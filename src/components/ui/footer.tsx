@@ -2,6 +2,7 @@
 
 import styles from "./footer.module.scss";
 import { useCalendly } from "@/components/ui/calendly-modal";
+import { Logo } from "@/components/ui/logo";
 
 const studioLinks = [
   { label: "About", href: "#about" },
@@ -50,16 +51,7 @@ export function HomeFooter() {
       <div className={styles.inner}>
         <div className={styles.topGrid}>
           <div className={styles.brandCol}>
-            <div className={styles.logoRow}>
-              <div className={styles.logoIcon}>
-                <span className="material-symbols-outlined" aria-hidden>
-                  menu
-                </span>
-              </div>
-              <span className={styles.logoText}>
-                Shimaya <em>Labs</em>
-              </span>
-            </div>
+            <Logo className={styles.logoText} />
             <p className={styles.brandTagline}>
               Engineered intelligence for modern teams. Made with <span role="img" aria-label="love">❤️</span> in India.
             </p>
