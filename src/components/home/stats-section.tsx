@@ -1,6 +1,6 @@
 import styles from "./stats-section.module.scss";
 
-const stats = [
+export const stats = [
   { value: "120+", label: "Products Delivered", icon: "inventory_2" },
   { value: "5M+", label: "Users Supported", icon: "groups" },
   { value: "99.95%", label: "Uptime", icon: "bolt" },
